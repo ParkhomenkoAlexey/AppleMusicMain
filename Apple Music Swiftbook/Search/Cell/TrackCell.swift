@@ -32,7 +32,8 @@ class TrackCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        trackImageView.backgroundColor = .red
+        trackImageView.layer.borderWidth = 0.1
+        trackImageView.layer.borderColor = #colorLiteral(red: 0.5667956471, green: 0.5676371455, blue: 0.5925787091, alpha: 1)
         trackImageView.layer.cornerRadius = 3
     }
     
