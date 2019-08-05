@@ -17,9 +17,7 @@ class MusicSearchController: UITableViewController {
     
     fileprivate var timer: Timer?
     
-    var tracks = [Track(trackName: "bad guy", artistName: "Billie Eilish"),
-                  Track(trackName: "bury a friend", artistName: "Billie Eilish")
-    ]
+    var tracks = [Track]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +29,7 @@ class MusicSearchController: UITableViewController {
     fileprivate func setupSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.dimsBackgroundDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
     }
     
@@ -68,8 +66,6 @@ extension MusicSearchController: UISearchBarDelegate {
                 self?.tableView.reloadData()
             }
         })
-        
-        
     }
 }
 

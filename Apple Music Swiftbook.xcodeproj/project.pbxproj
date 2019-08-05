@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D62184778CAB1CCF051989A4 /* Pods_Apple_Music_Swiftbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F652A24CE3B86A8D745541CB /* Pods_Apple_Music_Swiftbook.framework */; };
+		F0813F7D22F72513001CAC52 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7622F72513001CAC52 /* SearchPresenter.swift */; };
+		F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7722F72513001CAC52 /* SearchWorker.swift */; };
+		F0813F7F22F72513001CAC52 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7822F72513001CAC52 /* SearchRouter.swift */; };
+		F0813F8022F72513001CAC52 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7922F72513001CAC52 /* SearchModels.swift */; };
+		F0813F8122F72513001CAC52 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7A22F72513001CAC52 /* SearchViewController.swift */; };
+		F0813F8222F72513001CAC52 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7B22F72513001CAC52 /* SearchInteractor.swift */; };
+		F0813F8522F725A3001CAC52 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0813F8422F725A3001CAC52 /* SearchViewController.storyboard */; };
+		F0813F8722F7264E001CAC52 /* UIViewController + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */; };
 		F0870CC922E0F44900662E44 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870CC822E0F44900662E44 /* SearchResults.swift */; };
 		F0870CCD22E3384300662E44 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870CCC22E3384300662E44 /* NetworkService.swift */; };
 		F0DD1BEC22DF3CA900DCD102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD1BEB22DF3CA900DCD102 /* AppDelegate.swift */; };
@@ -23,6 +31,14 @@
 /* Begin PBXFileReference section */
 		227B93BCCACFF39DDBBBEECF /* Pods-Apple Music Swiftbook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music Swiftbook.release.xcconfig"; path = "Target Support Files/Pods-Apple Music Swiftbook/Pods-Apple Music Swiftbook.release.xcconfig"; sourceTree = "<group>"; };
 		838C0ECFCA560CA5B3432749 /* Pods-Apple Music Swiftbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music Swiftbook.debug.xcconfig"; path = "Target Support Files/Pods-Apple Music Swiftbook/Pods-Apple Music Swiftbook.debug.xcconfig"; sourceTree = "<group>"; };
+		F0813F7622F72513001CAC52 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		F0813F7722F72513001CAC52 /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
+		F0813F7822F72513001CAC52 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		F0813F7922F72513001CAC52 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
+		F0813F7A22F72513001CAC52 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F0813F7B22F72513001CAC52 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		F0813F8422F725A3001CAC52 /* SearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
+		F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Storyboard.swift"; sourceTree = "<group>"; };
 		F0870CC822E0F44900662E44 /* SearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		F0870CCC22E3384300662E44 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F0DD1BE822DF3CA900DCD102 /* Apple Music Swiftbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Music Swiftbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +83,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F0813F8822F72D2C001CAC52 /* OtherVC */ = {
+			isa = PBXGroup;
+			children = (
+				F0DD1BEF22DF3CA900DCD102 /* ViewController.swift */,
+			);
+			path = OtherVC;
+			sourceTree = "<group>";
+		};
+		F0813F8922F72D34001CAC52 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F0870CCA22E337A400662E44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,12 +137,13 @@
 		F0DD1BEA22DF3CA900DCD102 /* Apple Music Swiftbook */ = {
 			isa = PBXGroup;
 			children = (
-				F0870CCA22E337A400662E44 /* Services */,
 				F0DD1BEB22DF3CA900DCD102 /* AppDelegate.swift */,
 				F0DD1BED22DF3CA900DCD102 /* SceneDelegate.swift */,
 				F0DD1BFF22DF3F0400DCD102 /* MainTabBarController.swift */,
+				F0870CCA22E337A400662E44 /* Services */,
 				F0DD1C0322DF4E9600DCD102 /* Search */,
-				F0DD1BEF22DF3CA900DCD102 /* ViewController.swift */,
+				F0813F8822F72D2C001CAC52 /* OtherVC */,
+				F0813F8922F72D34001CAC52 /* Helpers */,
 				F0DD1BF122DF3CA900DCD102 /* Main.storyboard */,
 				F0DD1BF422DF3CAB00DCD102 /* Assets.xcassets */,
 				F0DD1BF622DF3CAB00DCD102 /* LaunchScreen.storyboard */,
@@ -123,6 +156,13 @@
 			isa = PBXGroup;
 			children = (
 				F0DD1C0122DF4D5C00DCD102 /* MusicSearchController.swift */,
+				F0813F8422F725A3001CAC52 /* SearchViewController.storyboard */,
+				F0813F7A22F72513001CAC52 /* SearchViewController.swift */,
+				F0813F7B22F72513001CAC52 /* SearchInteractor.swift */,
+				F0813F7622F72513001CAC52 /* SearchPresenter.swift */,
+				F0813F7922F72513001CAC52 /* SearchModels.swift */,
+				F0813F7722F72513001CAC52 /* SearchWorker.swift */,
+				F0813F7822F72513001CAC52 /* SearchRouter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -189,6 +229,7 @@
 			files = (
 				F0DD1BF822DF3CAB00DCD102 /* LaunchScreen.storyboard in Resources */,
 				F0DD1BF522DF3CAB00DCD102 /* Assets.xcassets in Resources */,
+				F0813F8522F725A3001CAC52 /* SearchViewController.storyboard in Resources */,
 				F0DD1BF322DF3CA900DCD102 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,11 +284,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0DD1C0222DF4D5C00DCD102 /* MusicSearchController.swift in Sources */,
+				F0813F8722F7264E001CAC52 /* UIViewController + Storyboard.swift in Sources */,
 				F0870CC922E0F44900662E44 /* SearchResults.swift in Sources */,
 				F0DD1BF022DF3CA900DCD102 /* ViewController.swift in Sources */,
+				F0813F8222F72513001CAC52 /* SearchInteractor.swift in Sources */,
 				F0DD1BEC22DF3CA900DCD102 /* AppDelegate.swift in Sources */,
 				F0DD1C0022DF3F0400DCD102 /* MainTabBarController.swift in Sources */,
+				F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */,
+				F0813F8122F72513001CAC52 /* SearchViewController.swift in Sources */,
+				F0813F7F22F72513001CAC52 /* SearchRouter.swift in Sources */,
+				F0813F8022F72513001CAC52 /* SearchModels.swift in Sources */,
 				F0DD1BEE22DF3CA900DCD102 /* SceneDelegate.swift in Sources */,
+				F0813F7D22F72513001CAC52 /* SearchPresenter.swift in Sources */,
 				F0870CCD22E3384300662E44 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

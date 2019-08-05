@@ -19,8 +19,10 @@ class MainTabBarController: UITabBarController {
         
         tabBar.tintColor = #colorLiteral(red: 0.9921568627, green: 0.1764705882, blue: 0.3333333333, alpha: 1)
         
+        let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
+        
         viewControllers = [
-            generateNavigationController(with: MusicSearchController(), title: "Search", image: #imageLiteral(resourceName: "search")),
+            generateNavigationController(with: searchVC, title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationController(with: ViewController(), title: "Favorites", image: #imageLiteral(resourceName: "favorites")),
             generateNavigationController(with: ViewController(), title: "Downloads", image: #imageLiteral(resourceName: "downloads"))
         ]
@@ -28,7 +30,7 @@ class MainTabBarController: UITabBarController {
     
     func generateNavigationController(with rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
-        //        navController.navigationBar.prefersLargeTitles = true
+        navController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
