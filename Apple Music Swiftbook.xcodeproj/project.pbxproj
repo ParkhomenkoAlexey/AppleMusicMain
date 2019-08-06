@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D62184778CAB1CCF051989A4 /* Pods_Apple_Music_Swiftbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F652A24CE3B86A8D745541CB /* Pods_Apple_Music_Swiftbook.framework */; };
+		F03A82C522F9FA5700FD5787 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82C422F9FA5700FD5787 /* CMTime + Extension.swift */; };
 		F0813F7D22F72513001CAC52 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7622F72513001CAC52 /* SearchPresenter.swift */; };
 		F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7722F72513001CAC52 /* SearchWorker.swift */; };
 		F0813F7F22F72513001CAC52 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7822F72513001CAC52 /* SearchRouter.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		227B93BCCACFF39DDBBBEECF /* Pods-Apple Music Swiftbook.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music Swiftbook.release.xcconfig"; path = "Target Support Files/Pods-Apple Music Swiftbook/Pods-Apple Music Swiftbook.release.xcconfig"; sourceTree = "<group>"; };
 		838C0ECFCA560CA5B3432749 /* Pods-Apple Music Swiftbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music Swiftbook.debug.xcconfig"; path = "Target Support Files/Pods-Apple Music Swiftbook/Pods-Apple Music Swiftbook.debug.xcconfig"; sourceTree = "<group>"; };
+		F03A82C422F9FA5700FD5787 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		F0813F7622F72513001CAC52 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		F0813F7722F72513001CAC52 /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
 		F0813F7822F72513001CAC52 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */,
+				F03A82C422F9FA5700FD5787 /* CMTime + Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F03A82C522F9FA5700FD5787 /* CMTime + Extension.swift in Sources */,
 				F0813F9C22F8E238001CAC52 /* PlayerDetailsView.swift in Sources */,
 				F0813F8722F7264E001CAC52 /* UIViewController + Storyboard.swift in Sources */,
 				F0870CC922E0F44900662E44 /* SearchResults.swift in Sources */,

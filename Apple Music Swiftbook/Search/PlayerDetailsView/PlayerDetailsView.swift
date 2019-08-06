@@ -13,18 +13,15 @@ class PlayerDetailsView: UIView {
     
     // MARK: - @IBOutlets and properties
     
-    @IBOutlet weak var trackTitleLabel: UILabel! {
-        didSet {
-            
-        }
-    }
+    @IBOutlet weak var trackTitleLabel: UILabel!
+    @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var trackImageView: UIImageView! {
         didSet {
             let scale: CGFloat = 0.8
             trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
         }
     }
-    @IBOutlet weak var authorTitleLabel: UILabel!
+    
     @IBOutlet weak var playPauseButton: UIButton! {
         didSet {
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
@@ -37,6 +34,10 @@ class PlayerDetailsView: UIView {
         return avPlayer
     }()
     
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var currentTimeSlider: UISlider!
+    
     // MARK: - awakeFromNib
     
     override func awakeFromNib() {
@@ -45,12 +46,8 @@ class PlayerDetailsView: UIView {
         trackTitleLabel.numberOfLines = 2
         trackImageView.layer.cornerRadius = 5
         
-        let time = CMTime(value: 1, timescale: 3)
-        let times = [NSValue(time: time)]
-        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            print("Track started playing")
-            self.enlargeTrackImageView()
-        }
+        observePlayerCurrentTime()
+        monitorStartTime()
     }
     
     // MARK: - Setup
@@ -75,6 +72,35 @@ class PlayerDetailsView: UIView {
         player.replaceCurrentItem(with: playerItem)
         
         player.play()
+    }
+    
+    // MARK: - Time setup, 16 и 17 Урок: Monitor Start Time & Tracking Playback Time
+    
+    private func monitorStartTime() {
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+            print("Track started playing")
+            self.enlargeTrackImageView()
+        }
+    }
+    
+    private func observePlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+            self.currentTimeLabel.text = time.toDisplayString()
+            let durationTime = self.player.currentItem?.duration
+            self.durationLabel.text = (durationTime! - time).toDisplayString()
+//            self.durationLabel.text = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
+            self.updateCurrentTimeSlider()
+        }
+    }
+    
+    private func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percentage = currentTimeSeconds / durationSeconds
+        self.currentTimeSlider.value = Float(percentage)
     }
     // MARK: - Animations
     

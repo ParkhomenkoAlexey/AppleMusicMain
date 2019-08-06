@@ -36,24 +36,24 @@
                             </constraints>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CfJ-ae-9vK">
-                            <rect key="frame" x="0.0" y="379" width="315" height="50.5"/>
+                            <rect key="frame" x="0.0" y="379" width="315" height="48"/>
                             <subviews>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1SW-sT-DQw">
                                     <rect key="frame" x="-2" y="0.0" width="319" height="31"/>
                                 </slider>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IGR-Mv-vee">
-                                    <rect key="frame" x="0.0" y="30" width="315" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="30" width="315" height="18"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gB-aH-02p">
-                                            <rect key="frame" x="0.0" y="0.0" width="157.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gB-aH-02p">
+                                            <rect key="frame" x="0.0" y="0.0" width="157.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-6:51" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nU-VZ-4FG">
-                                            <rect key="frame" x="157.5" y="0.0" width="157.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nU-VZ-4FG">
+                                            <rect key="frame" x="157.5" y="0.0" width="157.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -61,7 +61,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R4m-2Y-Ejx">
-                            <rect key="frame" x="0.0" y="439.5" width="315" height="58"/>
+                            <rect key="frame" x="0.0" y="437" width="315" height="58"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvs-ib-uJR">
                                     <rect key="frame" x="0.0" y="0.0" width="315" height="29"/>
@@ -78,15 +78,15 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ho4-LP-6BN">
-                            <rect key="frame" x="0.0" y="507.5" width="315" height="102.5"/>
+                            <rect key="frame" x="0.0" y="505" width="315" height="105"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-xs-Ult">
-                                    <rect key="frame" x="0.0" y="41.5" width="105" height="20"/>
+                                    <rect key="frame" x="0.0" y="42.5" width="105" height="20"/>
                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="Left"/>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-j8-Sph">
-                                    <rect key="frame" x="105" y="22" width="105" height="59"/>
+                                    <rect key="frame" x="105" y="23" width="105" height="59"/>
                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="play"/>
                                     <connections>
@@ -94,7 +94,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpS-kH-c11">
-                                    <rect key="frame" x="210" y="41.5" width="105" height="20"/>
+                                    <rect key="frame" x="210" y="42.5" width="105" height="20"/>
                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="Right"/>
                                 </button>
@@ -136,6 +136,9 @@
             <viewLayoutGuide key="safeArea" id="ikn-n4-dL0"/>
             <connections>
                 <outlet property="authorTitleLabel" destination="ixe-3d-VOp" id="4b6-C3-kf1"/>
+                <outlet property="currentTimeLabel" destination="4gB-aH-02p" id="dKN-bf-8sp"/>
+                <outlet property="currentTimeSlider" destination="1SW-sT-DQw" id="NCw-Gq-dpj"/>
+                <outlet property="durationLabel" destination="7nU-VZ-4FG" id="duZ-i2-NnH"/>
                 <outlet property="playPauseButton" destination="bwU-j8-Sph" id="EJ7-CM-VzN"/>
                 <outlet property="trackImageView" destination="SOi-Mw-ufj" id="LNU-d3-0kS"/>
                 <outlet property="trackTitleLabel" destination="mvs-ib-uJR" id="S2y-uL-8MA"/>
