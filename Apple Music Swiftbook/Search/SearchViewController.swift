@@ -14,6 +14,7 @@ protocol SearchDisplayLogic: class {
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
     
+    let searchController = UISearchController(searchResultsController: nil)
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic)?
     @IBOutlet weak var table: UITableView!
@@ -47,10 +48,11 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         setup()
         setupSearchBar()
         setupTableView()
+        searchBar(searchController.searchBar, textDidChange: "billie")
     }
     
     private func setupSearchBar() {
-        let searchController = UISearchController(searchResultsController: nil)
+        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
