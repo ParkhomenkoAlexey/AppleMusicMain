@@ -26,7 +26,6 @@
                                 <color key="titleColor" cocoaTouchSystemColor="linkColor"/>
                             </state>
                             <connections>
-                                <action selector="PlayerDetailsView:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="SBn-8a-UXT"/>
                                 <action selector="handleDismiss:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="qKi-6K-oeD"/>
                             </connections>
                         </button>
@@ -81,16 +80,22 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ho4-LP-6BN">
                             <rect key="frame" x="0.0" y="507.5" width="315" height="102.5"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-xs-Ult">
-                                    <rect key="frame" x="0.0" y="40.5" width="105" height="22"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-xs-Ult">
+                                    <rect key="frame" x="0.0" y="41.5" width="105" height="20"/>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="Left"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-j8-Sph">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-j8-Sph">
                                     <rect key="frame" x="105" y="22" width="105" height="59"/>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="play"/>
+                                    <connections>
+                                        <action selector="playPauseAction:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="ZDl-V1-v39"/>
+                                    </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpS-kH-c11">
-                                    <rect key="frame" x="210" y="40.5" width="105" height="22"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpS-kH-c11">
+                                    <rect key="frame" x="210" y="41.5" width="105" height="20"/>
+                                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="Right"/>
                                 </button>
                             </subviews>
