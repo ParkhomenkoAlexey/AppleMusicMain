@@ -111,6 +111,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         playerDetailsView.set(viewModel: cellViewModel)
         playerDetailsView.frame = self.view.frame
         window?.addSubview(playerDetailsView)
+//        self.present(ViewController(), animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

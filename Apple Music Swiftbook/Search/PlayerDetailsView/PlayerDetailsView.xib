@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Pk4-2z-HC0" customClass="PlayerDetailsView" customModule="Apple_Music_Swiftbook" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ErX-pF-aJz">
-                    <rect key="frame" x="24" y="44" width="366" height="794"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ErX-pF-aJz">
+                    <rect key="frame" x="30" y="0.0" width="315" height="637"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZS0-7V-iix">
-                            <rect key="frame" x="0.0" y="0.0" width="366" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="315" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Wnp-sY-DdB"/>
                             </constraints>
@@ -27,47 +27,95 @@
                             </state>
                             <connections>
                                 <action selector="PlayerDetailsView:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="SBn-8a-UXT"/>
+                                <action selector="handleDismiss:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="qKi-6K-oeD"/>
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="SOi-Mw-ufj">
-                            <rect key="frame" x="0.0" y="44" width="366" height="366"/>
+                            <rect key="frame" x="0.0" y="54" width="315" height="315"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="SOi-Mw-ufj" secondAttribute="height" id="ua2-VG-X9S"/>
                             </constraints>
                         </imageView>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1SW-sT-DQw">
-                            <rect key="frame" x="-2" y="410" width="370" height="37"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="36" id="MAb-Tg-PUN"/>
-                            </constraints>
-                        </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvs-ib-uJR">
-                            <rect key="frame" x="0.0" y="446" width="366" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-3d-VOp">
-                            <rect key="frame" x="0.0" y="466.5" width="366" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.99215686270000003" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ho4-LP-6BN">
-                            <rect key="frame" x="0.0" y="487" width="366" height="307"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CfJ-ae-9vK">
+                            <rect key="frame" x="0.0" y="379" width="315" height="50.5"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-xs-Ult">
-                                    <rect key="frame" x="0.0" y="0.0" width="274" height="307"/>
-                                    <state key="normal" title="Button"/>
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1SW-sT-DQw">
+                                    <rect key="frame" x="-2" y="0.0" width="319" height="31"/>
+                                </slider>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IGR-Mv-vee">
+                                    <rect key="frame" x="0.0" y="30" width="315" height="20.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gB-aH-02p">
+                                            <rect key="frame" x="0.0" y="0.0" width="157.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-6:51" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nU-VZ-4FG">
+                                            <rect key="frame" x="157.5" y="0.0" width="157.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="R4m-2Y-Ejx">
+                            <rect key="frame" x="0.0" y="439.5" width="315" height="58"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvs-ib-uJR">
+                                    <rect key="frame" x="0.0" y="0.0" width="315" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-3d-VOp">
+                                    <rect key="frame" x="0.0" y="29" width="315" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                    <color key="textColor" red="0.99215686270000003" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ho4-LP-6BN">
+                            <rect key="frame" x="0.0" y="507.5" width="315" height="102.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUN-xs-Ult">
+                                    <rect key="frame" x="0.0" y="40.5" width="105" height="22"/>
+                                    <state key="normal" image="Left"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-j8-Sph">
-                                    <rect key="frame" x="274" y="0.0" width="46" height="307"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-j8-Sph">
+                                    <rect key="frame" x="105" y="22" width="105" height="59"/>
+                                    <state key="normal" image="play"/>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpS-kH-c11">
-                                    <rect key="frame" x="320" y="0.0" width="46" height="307"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpS-kH-c11">
+                                    <rect key="frame" x="210" y="40.5" width="105" height="22"/>
+                                    <state key="normal" image="Right"/>
                                 </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mli-k2-DXP">
+                            <rect key="frame" x="0.0" y="620" width="315" height="17"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon Min" translatesAutoresizingMaskIntoConstraints="NO" id="AZo-L5-75W">
+                                    <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="AZo-L5-75W" secondAttribute="height" id="RhQ-tO-coo"/>
+                                        <constraint firstAttribute="width" constant="17" id="jGc-xf-jjG"/>
+                                    </constraints>
+                                </imageView>
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="02v-dK-n2N">
+                                    <rect key="frame" x="25" y="0.0" width="265" height="18"/>
+                                    <color key="tintColor" red="0.4941176471" green="0.4941176471" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </slider>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconMax" translatesAutoresizingMaskIntoConstraints="NO" id="kYU-BT-Bz6">
+                                    <rect key="frame" x="298" y="0.0" width="17" height="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="kYU-BT-Bz6" secondAttribute="height" multiplier="1:1" id="I52-ND-aNG"/>
+                                        <constraint firstAttribute="width" constant="17" id="WyD-MH-9zW"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                         </stackView>
                     </subviews>
@@ -75,21 +123,28 @@
             </subviews>
             <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="ikn-n4-dL0" firstAttribute="trailing" secondItem="ErX-pF-aJz" secondAttribute="trailing" constant="24" id="0ue-sg-kXV"/>
-                <constraint firstItem="ErX-pF-aJz" firstAttribute="leading" secondItem="ikn-n4-dL0" secondAttribute="leading" constant="24" id="92b-VL-MrY"/>
+                <constraint firstItem="ikn-n4-dL0" firstAttribute="trailing" secondItem="ErX-pF-aJz" secondAttribute="trailing" constant="30" id="0ue-sg-kXV"/>
+                <constraint firstItem="ErX-pF-aJz" firstAttribute="leading" secondItem="ikn-n4-dL0" secondAttribute="leading" constant="30" id="92b-VL-MrY"/>
                 <constraint firstItem="ErX-pF-aJz" firstAttribute="top" secondItem="ikn-n4-dL0" secondAttribute="top" id="DPb-DT-zbP"/>
-                <constraint firstItem="ikn-n4-dL0" firstAttribute="bottom" secondItem="ErX-pF-aJz" secondAttribute="bottom" constant="24" id="jOy-dY-JGE"/>
+                <constraint firstItem="ikn-n4-dL0" firstAttribute="bottom" secondItem="ErX-pF-aJz" secondAttribute="bottom" constant="30" id="jOy-dY-JGE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ikn-n4-dL0"/>
             <connections>
-                <outlet property="episodeImageView" destination="SOi-Mw-ufj" id="LNU-d3-0kS"/>
-                <outlet property="episodeTitleLabel" destination="mvs-ib-uJR" id="S2y-uL-8MA"/>
+                <outlet property="authorTitleLabel" destination="ixe-3d-VOp" id="4b6-C3-kf1"/>
+                <outlet property="playPauseButton" destination="bwU-j8-Sph" id="EJ7-CM-VzN"/>
+                <outlet property="trackImageView" destination="SOi-Mw-ufj" id="LNU-d3-0kS"/>
+                <outlet property="trackTitleLabel" destination="mvs-ib-uJR" id="S2y-uL-8MA"/>
             </connections>
             <point key="canvasLocation" x="126" y="159"/>
         </view>
     </objects>
     <resources>
         <image name="DragDown" width="37" height="12"/>
+        <image name="Icon Min" width="7" height="12"/>
+        <image name="IconMax" width="17" height="17"/>
+        <image name="Left" width="34" height="20"/>
+        <image name="Right" width="34" height="20"/>
         <image name="appicon" width="60" height="60"/>
+        <image name="play" width="59" height="59"/>
     </resources>
 </document>

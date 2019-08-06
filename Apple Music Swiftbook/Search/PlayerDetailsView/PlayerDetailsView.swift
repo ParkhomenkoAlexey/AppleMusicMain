@@ -10,26 +10,30 @@ import UIKit
 
 class PlayerDetailsView: UIView {
     
-//    var episode: Episode! {
-//        didSet {
-//            episodeTitleLabel.text = episode.title
-//            guard let url = URL(string: episode.imageUrl ?? "") else { return }
-//            episodeImageView.sd_setImage(with: url, completed: nil)
-//        }
-//    }
+    @IBOutlet weak var trackTitleLabel: UILabel! {
+        didSet {
+            trackTitleLabel.numberOfLines = 2
+        }
+    }
+    @IBOutlet weak var trackImageView: UIImageView!
+    @IBOutlet weak var authorTitleLabel: UILabel!
     
-    @IBOutlet weak var episodeTitleLabel: UILabel!
-    @IBOutlet weak var episodeImageView: UIImageView!
+    @IBOutlet weak var playPauseButton: UIButton!
+    
+    @IBAction func handleDismiss(_ sender: Any) {
+        self.removeFromSuperview()
+    }
     
     @IBAction func PlayerDetailsView(_ sender: Any) {
         self.removeFromSuperview()
     }
     
     func set(viewModel: SearchViewModel.Cell) {
-        episodeTitleLabel.text = viewModel.trackName
+        trackTitleLabel.text = viewModel.trackName
+        authorTitleLabel.text = viewModel.artistName
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
-        episodeImageView.sd_setImage(with: url, completed: nil)
+        trackImageView.sd_setImage(with: url, completed: nil)
     }
     
 }
