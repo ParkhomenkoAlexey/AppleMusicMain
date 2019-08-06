@@ -96,11 +96,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
         let cellViewModel = searchViewModel.cells[indexPath.row]
-//        cell.textLabel?.text = "\(cellViewModel.trackName)\n\(cellViewModel.artistName)"
-//        cell.textLabel?.numberOfLines = 2
-//        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         cell.set(viewModel: cellViewModel)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellViewModel = searchViewModel.cells[indexPath.row]
+        
+        print("Trying to play episode:", cellViewModel.trackName)
+        
+        let window = UIApplication.shared.keyWindow
+        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+        
+        playerDetailsView.set(viewModel: cellViewModel)
+        playerDetailsView.frame = self.view.frame
+        window?.addSubview(playerDetailsView)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

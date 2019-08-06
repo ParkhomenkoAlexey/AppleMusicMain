@@ -18,6 +18,8 @@
 		F0813F8722F7264E001CAC52 /* UIViewController + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */; };
 		F0813F9022F83A50001CAC52 /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0813F8F22F83A50001CAC52 /* TrackCell.xib */; };
 		F0813F9222F83A57001CAC52 /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F9122F83A57001CAC52 /* TrackCell.swift */; };
+		F0813F9B22F8E238001CAC52 /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0813F9922F8E238001CAC52 /* PlayerDetailsView.xib */; };
+		F0813F9C22F8E238001CAC52 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F9A22F8E238001CAC52 /* PlayerDetailsView.swift */; };
 		F0870CC922E0F44900662E44 /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870CC822E0F44900662E44 /* SearchResults.swift */; };
 		F0870CCD22E3384300662E44 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870CCC22E3384300662E44 /* NetworkService.swift */; };
 		F0DD1BEC22DF3CA900DCD102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD1BEB22DF3CA900DCD102 /* AppDelegate.swift */; };
@@ -42,6 +44,8 @@
 		F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Storyboard.swift"; sourceTree = "<group>"; };
 		F0813F8F22F83A50001CAC52 /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		F0813F9122F83A57001CAC52 /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
+		F0813F9922F8E238001CAC52 /* PlayerDetailsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
+		F0813F9A22F8E238001CAC52 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		F0870CC822E0F44900662E44 /* SearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		F0870CCC22E3384300662E44 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F0DD1BE822DF3CA900DCD102 /* Apple Music Swiftbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Music Swiftbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +114,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		F0813F9822F8E219001CAC52 /* PlayerDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				F0813F9A22F8E238001CAC52 /* PlayerDetailsView.swift */,
+				F0813F9922F8E238001CAC52 /* PlayerDetailsView.xib */,
+			);
+			path = PlayerDetailsView;
+			sourceTree = "<group>";
+		};
 		F0870CCA22E337A400662E44 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +179,7 @@
 		F0DD1C0322DF4E9600DCD102 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				F0813F9822F8E219001CAC52 /* PlayerDetailsView */,
 				F0813F9322F83A5B001CAC52 /* Cell */,
 				F0813F8422F725A3001CAC52 /* SearchViewController.storyboard */,
 				F0813F7A22F72513001CAC52 /* SearchViewController.swift */,
@@ -238,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0813F9B22F8E238001CAC52 /* PlayerDetailsView.xib in Resources */,
 				F0DD1BF822DF3CAB00DCD102 /* LaunchScreen.storyboard in Resources */,
 				F0813F9022F83A50001CAC52 /* TrackCell.xib in Resources */,
 				F0DD1BF522DF3CAB00DCD102 /* Assets.xcassets in Resources */,
@@ -295,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0813F9C22F8E238001CAC52 /* PlayerDetailsView.swift in Sources */,
 				F0813F8722F7264E001CAC52 /* UIViewController + Storyboard.swift in Sources */,
 				F0870CC922E0F44900662E44 /* SearchResults.swift in Sources */,
 				F0DD1BF022DF3CA900DCD102 /* ViewController.swift in Sources */,

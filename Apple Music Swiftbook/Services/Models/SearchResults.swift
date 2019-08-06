@@ -18,15 +18,17 @@ struct Track: Decodable {
     
     let trackName: String
     let artistName: String
-    let collectionName: String
+    let collectionName: String?
     let artworkUrl100: String?
     
     let trackViewUrl: String
-    let artistViewUrl: String
+    let artistViewUrl: String?
     let collectionViewUrl: String?
     
     let artistId: Int
     let releaseDate: String
+    let previewUrl: String?
+    let feedUrl: String?
 }
 
 

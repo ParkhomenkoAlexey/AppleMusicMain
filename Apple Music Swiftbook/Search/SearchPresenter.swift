@@ -29,10 +29,10 @@ class SearchPresenter: SearchPresentationLogic {
     }
     
     private func cellViewModel(from track: Track) -> SearchViewModel.Cell {
-        
+//        print("track.trackViewUrl: \(track.trackViewUrl)\ntrack.previewUrl: \(track.previewUrl)\ntrack.feedUrl: \(track.feedUrl)")
         return SearchViewModel.Cell.init(iconUrlString: track.artworkUrl100,
                                          trackName: track.trackName,
                                          artistName: track.artistName,
-                                         collectionName: track.collectionName)
+                                         collectionName: track.collectionName ?? "no collection")
     }
 }

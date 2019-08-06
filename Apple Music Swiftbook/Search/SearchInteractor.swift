@@ -25,7 +25,7 @@ class SearchInteractor: SearchBusinessLogic {
         
         switch request {
         case .getTracks(let searchTerm):
-            print(".getTracks interactor")
+//            print(".getTracks interactor")
             networkService.fetchTracks(searchText: searchTerm) { [weak self] (searchResults) in
                 self?.presenter?.presentData(response: .presentTracks(searchResults: searchResults))
             }
