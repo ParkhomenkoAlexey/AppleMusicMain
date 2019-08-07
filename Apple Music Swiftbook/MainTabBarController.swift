@@ -63,6 +63,9 @@ extension MainTabBarController {
     }
     
     func maximizePlayerDetails(viewModel: SearchViewModel.Cell?) {
+        // эти 2 функции можно было бы обыграть через делегаты, не понятно зачем я таскаю их и вызываю через
+//        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+//        mainTabBarController?.minimizePlayerDetails()
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         minimizedTopAnchorConstraint.isActive = false
@@ -70,7 +73,12 @@ extension MainTabBarController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            
+            self.playerDetaisView.maximizedStackView.isHidden = false
+            self.playerDetaisView.miniPlayerView.isHidden = true
         }, completion: nil)
+        
+        
         
         guard let viewModel = viewModel else { return }
         playerDetaisView.set(viewModel: viewModel)
@@ -84,7 +92,12 @@ extension MainTabBarController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.tabBar.transform = .identity
+            
+            self.playerDetaisView.maximizedStackView.isHidden = true
+            self.playerDetaisView.miniPlayerView.isHidden = false
         }, completion: nil)
+        
+        
     }
     
     

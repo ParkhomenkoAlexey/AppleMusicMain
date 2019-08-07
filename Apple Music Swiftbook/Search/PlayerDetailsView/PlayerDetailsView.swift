@@ -24,6 +24,19 @@ class PlayerDetailsView: UIView {
     
     weak var delegate: TrackMovingDelegate?
     
+    @IBOutlet weak var miniTrackImageView: UIImageView!
+    @IBOutlet weak var miniTrackTitleLabel: UILabel!
+    @IBOutlet weak var miniPlayPauseButton: UIButton! {
+        didSet {
+            miniPlayPauseButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
+        }
+    }
+    @IBOutlet weak var miniGoForwardButton: UIButton!
+    @IBOutlet weak var miniPlayerView: UIView!
+    
+    
+    @IBOutlet weak var maximizedStackView: UIStackView!
+    
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var trackImageView: UIImageView! {
@@ -58,6 +71,7 @@ class PlayerDetailsView: UIView {
         
         trackTitleLabel.numberOfLines = 2
         trackImageView.layer.cornerRadius = 5
+        miniTrackImageView.layer.cornerRadius = 3
         currentTimeSlider.minimumTrackTintColor = #colorLiteral(red: 0.464419961, green: 0.5312339664, blue: 0.5431776643, alpha: 1)
         currentTimeSlider.setThumbImage(#imageLiteral(resourceName: "Knob"), for: .normal)
         
@@ -77,12 +91,14 @@ class PlayerDetailsView: UIView {
     func set(viewModel: SearchViewModel.Cell) {
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
+        miniTrackTitleLabel.text = viewModel.trackName
         
         playTrack(previewUrl: viewModel.previewUrl, trackName: viewModel.trackName)
 
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
+        miniTrackImageView.sd_setImage(with: url, completed: nil)
         observePlayerCurrentTime()
         monitorStartTime()
     }
@@ -158,14 +174,16 @@ class PlayerDetailsView: UIView {
     
     // MARK: - @IBActions
     
-    @IBAction func playPauseAction(_ sender: Any) {
+    @IBAction func playPauseAction(_ sender: UIButton) {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeTrackImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkTrackImageView()
         }
     }
