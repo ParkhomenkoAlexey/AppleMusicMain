@@ -14,8 +14,8 @@ import AVKit
 //}
 
 protocol TrackMovingDelegate: class {
-    func moveBackForPreviousTrack()
-    func moveForwardForNextTrack()
+    func moveBackForPreviousTrack() -> SearchViewModel.Cell?
+    func moveForwardForNextTrack()  -> SearchViewModel.Cell?
 }
 
 class PlayerDetailsView: UIView {
@@ -23,6 +23,7 @@ class PlayerDetailsView: UIView {
     // MARK: - @IBOutlets and properties
     
     weak var delegate: TrackMovingDelegate?
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     @IBOutlet weak var miniTrackImageView: UIImageView!
     @IBOutlet weak var miniTrackTitleLabel: UILabel!
@@ -82,8 +83,7 @@ class PlayerDetailsView: UIView {
     
     @objc func handleTapMaximize() {
         print("tapping to maximize")
-        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-        mainTabBarController?.maximizePlayerDetails(viewModel: nil)
+        tabBarDelegate?.maximizePlayerDetails(viewModel: nil)
     }
     
     // MARK: - Setup
@@ -200,11 +200,13 @@ class PlayerDetailsView: UIView {
     }
     
     @IBAction func previousTrack(_ sender: Any) {
-        delegate?.moveBackForPreviousTrack()
+        let cellViewModel = delegate?.moveBackForPreviousTrack()
+        self.set(viewModel: cellViewModel!)
     }
     
     @IBAction func nextTrack(_ sender: Any) {
-        delegate?.moveForwardForNextTrack()
+        let cellViewModel = delegate?.moveForwardForNextTrack()
+        self.set(viewModel: cellViewModel!)
     }
     
     @IBAction func handleVolumeChange(_ sender: Any) {

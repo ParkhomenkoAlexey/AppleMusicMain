@@ -9,9 +9,15 @@
 import Foundation
 import UIKit
 
+protocol MainTabBarControllerDelegate: class {
+    func maximizePlayerDetails(viewModel: SearchViewModel.Cell?)
+    func minimizePlayerDetails()
+}
+
 class MainTabBarController: UITabBarController {
     
     let playerDetaisView: PlayerDetailsView = PlayerDetailsView.loadFromNib()
+    let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
     private var maximizedTopAnchorConstraint: NSLayoutConstraint!
     private var minimizedTopAnchorConstraint: NSLayoutConstraint!
     
@@ -22,7 +28,8 @@ class MainTabBarController: UITabBarController {
         
         tabBar.tintColor = #colorLiteral(red: 0.9921568627, green: 0.1764705882, blue: 0.3333333333, alpha: 1)
         
-        let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
+        
+        searchVC.tabBarDelegate = self
         viewControllers = [
             generateNavigationController(with: searchVC, title: "Search", image: #imageLiteral(resourceName: "search")),
             generateNavigationController(with: ViewController(), title: "Favorites", image: #imageLiteral(resourceName: "favorites")),
@@ -51,6 +58,8 @@ extension MainTabBarController {
         view.insertSubview(playerDetaisView, belowSubview: tabBar)
         
         playerDetaisView.translatesAutoresizingMaskIntoConstraints = false
+        playerDetaisView.tabBarDelegate = self
+        playerDetaisView.delegate = searchVC
         
         maximizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
         minimizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
@@ -61,11 +70,12 @@ extension MainTabBarController {
         playerDetaisView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         playerDetaisView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
+}
+
+extension MainTabBarController: MainTabBarControllerDelegate {
     
     func maximizePlayerDetails(viewModel: SearchViewModel.Cell?) {
-        // эти 2 функции можно было бы обыграть через делегаты, не понятно зачем я таскаю их и вызываю через
-//        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-//        mainTabBarController?.minimizePlayerDetails()
+        
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         minimizedTopAnchorConstraint.isActive = false
@@ -77,8 +87,6 @@ extension MainTabBarController {
             self.playerDetaisView.maximizedStackView.isHidden = false
             self.playerDetaisView.miniPlayerView.isHidden = true
         }, completion: nil)
-        
-        
         
         guard let viewModel = viewModel else { return }
         playerDetaisView.set(viewModel: viewModel)
@@ -96,10 +104,6 @@ extension MainTabBarController {
             self.playerDetaisView.maximizedStackView.isHidden = true
             self.playerDetaisView.miniPlayerView.isHidden = false
         }, completion: nil)
-        
-        
     }
-    
-    
 }
 
