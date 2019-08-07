@@ -9,13 +9,24 @@
 import UIKit
 
 protocol SearchRoutingLogic {
+    func routeToPlayerDetaisViewController(cellViewModel: SearchViewModel.Cell)
 
 }
 
 class SearchRouter: NSObject, SearchRoutingLogic {
-
+    
   weak var viewController: SearchViewController?
   
   // MARK: Routing
+    func routeToPlayerDetaisViewController(cellViewModel: SearchViewModel.Cell) {
+        
+        let window = UIApplication.shared.keyWindow
+        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+        playerDetailsView.delegate = viewController
+        playerDetailsView.set(viewModel: cellViewModel)
+        playerDetailsView.frame = UIScreen.main.bounds
+        window?.addSubview(playerDetailsView)
+        
+    }
   
 }

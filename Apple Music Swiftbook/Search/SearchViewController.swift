@@ -91,7 +91,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -112,12 +111,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let cellViewModel = searchViewModel.cells[indexPath.row]
-        let window = UIApplication.shared.keyWindow
-        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
-        playerDetailsView.delegate = self
-        playerDetailsView.set(viewModel: cellViewModel)
-        playerDetailsView.frame = self.view.frame
-        window?.addSubview(playerDetailsView)
+        router?.routeToPlayerDetaisViewController(cellViewModel: cellViewModel)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
