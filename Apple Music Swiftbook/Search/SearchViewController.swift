@@ -22,6 +22,10 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     private var searchViewModel = SearchViewModel.init(cells: [])
     private var timer: Timer?
     
+    private lazy var footerView = FooterView()
+    
+    
+    
     // MARK: - Setup
     
     private func setup() {
@@ -48,7 +52,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         setup()
         setupSearchBar()
         setupTableView()
-        searchBar(searchController.searchBar, textDidChange: "billie")
+//        searchBar(searchController.searchBar, textDidChange: "billie")
     }
     
     private func setupSearchBar() {
@@ -62,7 +66,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     private func setupTableView() {
         let nib = UINib(nibName: "TrackCell", bundle: nil)
         table.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
-        table.tableFooterView = UIView()
+        table.tableFooterView = footerView
     }
     
     func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
@@ -70,6 +74,9 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         case .displayTracks(let searchViewModel):
             self.searchViewModel = searchViewModel
             table.reloadData()
+            footerView.setTitle("fe")
+        case .displayFooterLoader:
+            footerView.showLoader()
         }
     }
 }
@@ -103,8 +110,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellViewModel = searchViewModel.cells[indexPath.row]
         
+        let cellViewModel = searchViewModel.cells[indexPath.row]
         let window = UIApplication.shared.keyWindow
         let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
         playerDetailsView.delegate = self

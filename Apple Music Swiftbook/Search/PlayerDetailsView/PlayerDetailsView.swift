@@ -94,24 +94,30 @@ class PlayerDetailsView: UIView {
     
     // MARK: - Time setup, 16 и 17 Урок: Monitor Start Time & Tracking Playback Time
     
+    // player has a reference to self
+    /// self has a reference to player
     private func monitorStartTime() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
-        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            self.enlargeTrackImageView()
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.enlargeTrackImageView()
         }
     }
     
     private func observePlayerCurrentTime() {
         let interval = CMTimeMake(value: 1, timescale: 2)
-        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
-            self.currentTimeLabel.text = time.toDisplayString()
-            let durationTime = self.player.currentItem?.duration
-            let currentDurationText = (durationTime! - time).toDisplayString()
-            self.durationLabel.text = "-\(currentDurationText)"
-//            self.durationLabel.text = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
-            self.updateCurrentTimeSlider()
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            self?.currentTimeLabel.text = time.toDisplayString()
+            let durationTime = self?.player.currentItem?.duration
+            let currentDurationText = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
+            self?.durationLabel.text = "-\(currentDurationText)"
+//            self?.durationLabel.text = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
+            self?.updateCurrentTimeSlider()
         }
+    }
+    
+    deinit {
+        print("PlayerDetailsView memory being reclaimed...")
     }
     
     private func updateCurrentTimeSlider() {

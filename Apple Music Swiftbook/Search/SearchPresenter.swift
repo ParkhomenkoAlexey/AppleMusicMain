@@ -25,6 +25,8 @@ class SearchPresenter: SearchPresentationLogic {
             let feedViewModel = SearchViewModel.init(cells: cells)
             viewController?.displayData(viewModel: .displayTracks(searchViewModel: feedViewModel))
             
+        case .presentFooterLoader:
+            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayFooterLoader)
         }
     }
     
