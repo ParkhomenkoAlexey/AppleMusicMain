@@ -109,7 +109,7 @@ class PlayerDetailsView: UIView {
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
             self?.currentTimeLabel.text = time.toDisplayString()
             let durationTime = self?.player.currentItem?.duration
-            let currentDurationText = (durationTime! - time).toDisplayString()
+            let currentDurationText = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()
             self?.durationLabel.text = "-\(currentDurationText)"
 //            self?.durationLabel.text = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
             self?.updateCurrentTimeSlider()
