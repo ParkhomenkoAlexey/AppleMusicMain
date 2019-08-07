@@ -105,15 +105,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellViewModel = searchViewModel.cells[indexPath.row]
         
-        print("Trying to play episode:", cellViewModel.trackName)
-        
         let window = UIApplication.shared.keyWindow
         let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
-        
+        playerDetailsView.delegate = self
         playerDetailsView.set(viewModel: cellViewModel)
         playerDetailsView.frame = self.view.frame
         window?.addSubview(playerDetailsView)
-//        self.present(ViewController(), animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,5 +128,25 @@ extension SearchViewController: UISearchBarDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             self.interactor?.makeRequest(request: .getTracks(searchTerm: searchText))
         })
+    }
+}
+
+extension SearchViewController: TrackMovingDelegate {
+    
+    
+    func moveBackForPreviousTrack() {
+        print(#function)
+        
+    }
+    
+    func moveForwardForNextTrack() {
+        print(#function)
+//        guard let indexPath = table.indexPathForSelectedRow else { return nil }
+//        let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+//        guard let _ = table.cellForRow(at: nextIndexPath) else { return nil }
+//        let cellViewModel = searchViewModel.cells[nextIndexPath.row]
+//        print("next cellViewModel.trackName:", cellViewModel.trackName)
+//        return cellViewModel
+        
     }
 }

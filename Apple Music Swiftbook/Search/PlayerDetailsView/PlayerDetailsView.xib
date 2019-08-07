@@ -38,8 +38,11 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CfJ-ae-9vK">
                             <rect key="frame" x="0.0" y="379" width="315" height="48"/>
                             <subviews>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1SW-sT-DQw">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1SW-sT-DQw">
                                     <rect key="frame" x="-2" y="0.0" width="319" height="31"/>
+                                    <connections>
+                                        <action selector="handleCurrentTimeSliderChange:" destination="Pk4-2z-HC0" eventType="valueChanged" id="HFh-Pq-22p"/>
+                                    </connections>
                                 </slider>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IGR-Mv-vee">
                                     <rect key="frame" x="0.0" y="30" width="315" height="18"/>
@@ -84,6 +87,9 @@
                                     <rect key="frame" x="0.0" y="42.5" width="105" height="20"/>
                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="Left"/>
+                                    <connections>
+                                        <action selector="previousTrack:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="upS-hr-CMm"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-j8-Sph">
                                     <rect key="frame" x="105" y="23" width="105" height="59"/>
@@ -97,6 +103,9 @@
                                     <rect key="frame" x="210" y="42.5" width="105" height="20"/>
                                     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <state key="normal" image="Right"/>
+                                    <connections>
+                                        <action selector="nextTrack:" destination="Pk4-2z-HC0" eventType="touchUpInside" id="0dw-AW-dOt"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
@@ -110,9 +119,12 @@
                                         <constraint firstAttribute="width" constant="17" id="jGc-xf-jjG"/>
                                     </constraints>
                                 </imageView>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="02v-dK-n2N">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="02v-dK-n2N">
                                     <rect key="frame" x="25" y="0.0" width="265" height="18"/>
                                     <color key="tintColor" red="0.4941176471" green="0.4941176471" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <action selector="handleVolumeChange:" destination="Pk4-2z-HC0" eventType="valueChanged" id="cEm-mY-GMX"/>
+                                    </connections>
                                 </slider>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconMax" translatesAutoresizingMaskIntoConstraints="NO" id="kYU-BT-Bz6">
                                     <rect key="frame" x="298" y="0.0" width="17" height="17"/>
@@ -142,6 +154,7 @@
                 <outlet property="playPauseButton" destination="bwU-j8-Sph" id="EJ7-CM-VzN"/>
                 <outlet property="trackImageView" destination="SOi-Mw-ufj" id="LNU-d3-0kS"/>
                 <outlet property="trackTitleLabel" destination="mvs-ib-uJR" id="S2y-uL-8MA"/>
+                <outlet property="volumeSlider" destination="02v-dK-n2N" id="Q61-YO-wnK"/>
             </connections>
             <point key="canvasLocation" x="126" y="159"/>
         </view>

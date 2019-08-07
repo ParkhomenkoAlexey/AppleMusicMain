@@ -9,9 +9,20 @@
 import UIKit
 import AVKit
 
+//protocol NewsfeedCodeCellDelegate: class {
+//    func revealPost(for cell: NewsfeedCodeCell)
+//}
+
+protocol TrackMovingDelegate: class {
+    func moveBackForPreviousTrack()
+    func moveForwardForNextTrack()
+}
+
 class PlayerDetailsView: UIView {
     
     // MARK: - @IBOutlets and properties
+    
+    weak var delegate: TrackMovingDelegate?
     
     @IBOutlet weak var trackTitleLabel: UILabel!
     @IBOutlet weak var authorTitleLabel: UILabel!
@@ -38,6 +49,8 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var currentTimeSlider: UISlider!
     
+    @IBOutlet weak var volumeSlider: UISlider!
+    
     // MARK: - awakeFromNib
     
     override func awakeFromNib() {
@@ -46,8 +59,7 @@ class PlayerDetailsView: UIView {
         trackTitleLabel.numberOfLines = 2
         trackImageView.layer.cornerRadius = 5
         
-        observePlayerCurrentTime()
-        monitorStartTime()
+        
     }
     
     // MARK: - Setup
@@ -57,21 +69,27 @@ class PlayerDetailsView: UIView {
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
         
-        playTrack(previewUrl: viewModel.previewUrl)
+    
+        playTrack(previewUrl: viewModel.previewUrl, trackName: viewModel.trackName)
+
+        
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
+                observePlayerCurrentTime()
+                monitorStartTime()
     }
     
-    private func playTrack(previewUrl: String?) {
+    private func playTrack(previewUrl: String?, trackName: String) {
         
-        print("Trying to play track at url:", previewUrl ?? "No previewUrl")
+//        print("Trying to play track at url:", previewUrl ?? "No previewUrl")
         guard let url = URL(string: previewUrl ?? "") else { return }
         
         let playerItem = AVPlayerItem(url: url)
         player.replaceCurrentItem(with: playerItem)
         
         player.play()
+        print("Track started playing:", trackName)
     }
     
     // MARK: - Time setup, 16 и 17 Урок: Monitor Start Time & Tracking Playback Time
@@ -80,7 +98,6 @@ class PlayerDetailsView: UIView {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            print("Track started playing")
             self.enlargeTrackImageView()
         }
     }
@@ -90,7 +107,8 @@ class PlayerDetailsView: UIView {
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
             self.currentTimeLabel.text = time.toDisplayString()
             let durationTime = self.player.currentItem?.duration
-            self.durationLabel.text = (durationTime! - time).toDisplayString()
+            let currentDurationText = (durationTime! - time).toDisplayString()
+            self.durationLabel.text = "-\(currentDurationText)"
 //            self.durationLabel.text = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
             self.updateCurrentTimeSlider()
         }
@@ -134,4 +152,28 @@ class PlayerDetailsView: UIView {
             shrinkTrackImageView()
         }
     }
+    
+    @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
+        print("currentTimeSlider.value:", currentTimeSlider.value)
+        let percentage = currentTimeSlider.value
+        guard let duration = player.currentItem?.duration else { return }
+        let durationInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(percentage) * durationInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+//        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: Int32(NSEC_PER_SEC))
+        player.seek(to: seekTime)
+    }
+    
+    @IBAction func previousTrack(_ sender: Any) {
+        delegate?.moveBackForPreviousTrack()
+    }
+    
+    @IBAction func nextTrack(_ sender: Any) {
+        delegate?.moveForwardForNextTrack()
+    }
+    
+    @IBAction func handleVolumeChange(_ sender: Any) {
+        player.volume = volumeSlider.value
+    }
+    
 }
