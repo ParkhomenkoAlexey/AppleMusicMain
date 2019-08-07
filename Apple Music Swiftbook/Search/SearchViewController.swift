@@ -52,7 +52,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         setup()
         setupSearchBar()
         setupTableView()
-//        searchBar(searchController.searchBar, textDidChange: "billie")
+        searchBar(searchController.searchBar, textDidChange: "billie")
     }
     
     private func setupSearchBar() {
@@ -74,7 +74,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         case .displayTracks(let searchViewModel):
             self.searchViewModel = searchViewModel
             table.reloadData()
-            footerView.setTitle("fe")
+            footerView.hideLoader()
         case .displayFooterLoader:
             footerView.showLoader()
         }

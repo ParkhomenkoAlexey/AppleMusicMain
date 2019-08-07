@@ -58,8 +58,8 @@ class PlayerDetailsView: UIView {
         
         trackTitleLabel.numberOfLines = 2
         trackImageView.layer.cornerRadius = 5
-        
-        
+        currentTimeSlider.minimumTrackTintColor = #colorLiteral(red: 0.464419961, green: 0.5312339664, blue: 0.5431776643, alpha: 1)
+        currentTimeSlider.setThumbImage(#imageLiteral(resourceName: "Knob"), for: .normal)
     }
     
     // MARK: - Setup
@@ -76,8 +76,8 @@ class PlayerDetailsView: UIView {
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
-                observePlayerCurrentTime()
-                monitorStartTime()
+        observePlayerCurrentTime()
+        monitorStartTime()
     }
     
     private func playTrack(previewUrl: String?, trackName: String) {
@@ -109,7 +109,7 @@ class PlayerDetailsView: UIView {
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
             self?.currentTimeLabel.text = time.toDisplayString()
             let durationTime = self?.player.currentItem?.duration
-            let currentDurationText = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
+            let currentDurationText = (durationTime! - time).toDisplayString()
             self?.durationLabel.text = "-\(currentDurationText)"
 //            self?.durationLabel.text = (durationTime ?? CMTimeMake(value: 1, timescale: 1) - time).toDisplayString()
             self?.updateCurrentTimeSlider()
@@ -160,7 +160,7 @@ class PlayerDetailsView: UIView {
     }
     
     @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
-        print("currentTimeSlider.value:", currentTimeSlider.value)
+//        print("currentTimeSlider.value:", currentTimeSlider.value)
         let percentage = currentTimeSlider.value
         guard let duration = player.currentItem?.duration else { return }
         let durationInSeconds = CMTimeGetSeconds(duration)
