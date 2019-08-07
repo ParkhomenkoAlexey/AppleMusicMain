@@ -167,9 +167,8 @@ class PlayerDetailsView: UIView {
     // MARK: - handleDismiss @IBAction
     
     @IBAction func handleDismiss(_ sender: Any) {
-//        self.removeFromSuperview()
-        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-        mainTabBarController?.minimizePlayerDetails()
+        self.tabBarDelegate?.minimizePlayerDetails()
+        
     }
     
     // MARK: - @IBActions

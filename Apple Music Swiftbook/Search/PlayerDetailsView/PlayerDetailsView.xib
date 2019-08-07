@@ -17,6 +17,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-VL-Cso">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
+                        <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMP-8X-LJW">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="opaqueSeparatorColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Pdz-se-NYE"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Dww-wy-cKl">
                             <rect key="frame" x="8" y="8" width="359" height="48"/>
                             <subviews>
@@ -62,9 +69,12 @@
                     <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="0.70360659246575341" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Dww-wy-cKl" firstAttribute="leading" secondItem="x2c-VL-Cso" secondAttribute="leading" constant="8" id="869-MC-Noj"/>
+                        <constraint firstItem="kMP-8X-LJW" firstAttribute="leading" secondItem="x2c-VL-Cso" secondAttribute="leading" id="ARK-yT-kVC"/>
                         <constraint firstAttribute="trailing" secondItem="Dww-wy-cKl" secondAttribute="trailing" constant="8" id="Bae-hg-Saz"/>
+                        <constraint firstItem="kMP-8X-LJW" firstAttribute="top" secondItem="x2c-VL-Cso" secondAttribute="top" id="Mgy-aQ-uvz"/>
                         <constraint firstAttribute="bottom" secondItem="Dww-wy-cKl" secondAttribute="bottom" constant="8" id="Sox-ye-Gks"/>
                         <constraint firstAttribute="height" constant="64" id="Vck-Sd-Aiz"/>
+                        <constraint firstAttribute="trailing" secondItem="kMP-8X-LJW" secondAttribute="trailing" id="mPt-KA-7SY"/>
                         <constraint firstItem="Dww-wy-cKl" firstAttribute="top" secondItem="x2c-VL-Cso" secondAttribute="top" constant="8" id="qLC-eb-mNt"/>
                     </constraints>
                 </view>
