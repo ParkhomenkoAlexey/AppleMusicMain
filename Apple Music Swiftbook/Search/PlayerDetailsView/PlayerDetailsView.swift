@@ -50,7 +50,7 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var currentTimeSlider: UISlider!
     
     @IBOutlet weak var volumeSlider: UISlider!
-    
+
     // MARK: - awakeFromNib
     
     override func awakeFromNib() {
@@ -60,19 +60,26 @@ class PlayerDetailsView: UIView {
         trackImageView.layer.cornerRadius = 5
         currentTimeSlider.minimumTrackTintColor = #colorLiteral(red: 0.464419961, green: 0.5312339664, blue: 0.5431776643, alpha: 1)
         currentTimeSlider.setThumbImage(#imageLiteral(resourceName: "Knob"), for: .normal)
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+    }
+    
+    // MARK: - Maximizing and Minimizing gestures
+    
+    @objc func handleTapMaximize() {
+        print("tapping to maximize")
+        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+        mainTabBarController?.maximizePlayerDetails(viewModel: nil)
     }
     
     // MARK: - Setup
-    
     
     func set(viewModel: SearchViewModel.Cell) {
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
         
-    
         playTrack(previewUrl: viewModel.previewUrl, trackName: viewModel.trackName)
 
-        
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
         guard let url = URL(string: string600 ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
@@ -95,7 +102,7 @@ class PlayerDetailsView: UIView {
     // MARK: - Time setup, 16 и 17 Урок: Monitor Start Time & Tracking Playback Time
     
     // player has a reference to self
-    /// self has a reference to player
+    // self has a reference to player
     private func monitorStartTime() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
@@ -126,7 +133,7 @@ class PlayerDetailsView: UIView {
         let percentage = currentTimeSeconds / durationSeconds
         self.currentTimeSlider.value = Float(percentage)
     }
-    // MARK: - Animations
+    // MARK: - Animations trackImageView
     
     private func enlargeTrackImageView() {
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -141,11 +148,15 @@ class PlayerDetailsView: UIView {
         }, completion: nil)
     }
     
-    // MARK: - @IBActions
+    // MARK: - handleDismiss @IBAction
     
     @IBAction func handleDismiss(_ sender: Any) {
-        self.removeFromSuperview()
+//        self.removeFromSuperview()
+        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+        mainTabBarController?.minimizePlayerDetails()
     }
+    
+    // MARK: - @IBActions
     
     @IBAction func playPauseAction(_ sender: Any) {
         if player.timeControlStatus == .paused {

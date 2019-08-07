@@ -20,13 +20,17 @@ class SearchRouter: NSObject, SearchRoutingLogic {
   // MARK: Routing
     func routeToPlayerDetaisViewController(cellViewModel: SearchViewModel.Cell) {
         
-        let window = UIApplication.shared.keyWindow
-//        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
-        let playerDetailsView: PlayerDetailsView = PlayerDetailsView.loadFromNib()
-        playerDetailsView.delegate = viewController
-        playerDetailsView.set(viewModel: cellViewModel)
-        playerDetailsView.frame = UIScreen.main.bounds
-        window?.addSubview(playerDetailsView)
+//        let window = UIApplication.shared.keyWindow
+////        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+//        let playerDetailsView: PlayerDetailsView = PlayerDetailsView.loadFromNib()
+//        playerDetailsView.delegate = viewController
+//        playerDetailsView.set(viewModel: cellViewModel)
+//        playerDetailsView.frame = UIScreen.main.bounds
+//        window?.addSubview(playerDetailsView)
+        
+        
+        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+        mainTabBarController?.maximizePlayerDetails(viewModel: cellViewModel)
         
     }
   

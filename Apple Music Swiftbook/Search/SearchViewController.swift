@@ -43,7 +43,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     // MARK: - Routing
     
     
-    
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
@@ -56,7 +55,6 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     }
     
     private func setupSearchBar() {
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
@@ -109,6 +107,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let cellViewModel = searchViewModel.cells[indexPath.row]
         router?.routeToPlayerDetaisViewController(cellViewModel: cellViewModel)
@@ -134,10 +133,8 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: TrackMovingDelegate {
     
-    
     func moveBackForPreviousTrack() {
         print(#function)
-        
     }
     
     func moveForwardForNextTrack() {

@@ -11,8 +11,9 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    var maximizedTopAnchorConstraint: NSLayoutConstraint!
-    var minimizedTopAnchorConstraint: NSLayoutConstraint!
+    let playerDetaisView: PlayerDetailsView = PlayerDetailsView.loadFromNib()
+    private var maximizedTopAnchorConstraint: NSLayoutConstraint!
+    private var minimizedTopAnchorConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,7 @@ class MainTabBarController: UITabBarController {
         ]
         
         setupPlayerDetaisView()
-        perform(#selector(maximizePlayerDetails), with: nil, afterDelay: 1)
+
     }
 
     func generateNavigationController(with rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
@@ -45,49 +46,47 @@ class MainTabBarController: UITabBarController {
 extension MainTabBarController {
     // MARK: - Setup functions
     
-    @objc func maximizePlayerDetails() {
+    private func setupPlayerDetaisView() {
+        
+        view.insertSubview(playerDetaisView, belowSubview: tabBar)
+        
+        playerDetaisView.translatesAutoresizingMaskIntoConstraints = false
+        
+        maximizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
+        minimizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
+        
+        maximizedTopAnchorConstraint.isActive = true
+        
+        playerDetaisView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        playerDetaisView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        playerDetaisView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    }
+    
+    func maximizePlayerDetails(viewModel: SearchViewModel.Cell?) {
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         minimizedTopAnchorConstraint.isActive = false
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
+            self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
         }, completion: nil)
+        
+        guard let viewModel = viewModel else { return }
+        playerDetaisView.set(viewModel: viewModel)
     }
     
-    @objc func minimizePlayerDetails() {
+    func minimizePlayerDetails() {
         
         maximizedTopAnchorConstraint.isActive = false
         minimizedTopAnchorConstraint.isActive = true
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
+            self.tabBar.transform = .identity
         }, completion: nil)
     }
     
-    private func setupPlayerDetaisView() {
-        print("Setting up PlayerDetailsView")
-        
-        let playerDetaisView: PlayerDetailsView = PlayerDetailsView.loadFromNib()
-        //        view.addSubview(playerDetaisView)
-        view.insertSubview(playerDetaisView, belowSubview: tabBar)
-        
-        playerDetaisView.backgroundColor = .red
-        playerDetaisView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //        playerDetaisView.frame = view.frame
-        //        enables auto layout
-        
-        maximizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
-        maximizedTopAnchorConstraint.isActive = true
-        
-        minimizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
-        //        minimizedTopAnchorConstraint.isActive = true
-        
-        
-        playerDetaisView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        playerDetaisView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        playerDetaisView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    }
+    
 }
 
