@@ -21,7 +21,8 @@ class SearchRouter: NSObject, SearchRoutingLogic {
     func routeToPlayerDetaisViewController(cellViewModel: SearchViewModel.Cell) {
         
         let window = UIApplication.shared.keyWindow
-        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+//        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
+        let playerDetailsView: PlayerDetailsView = PlayerDetailsView.loadFromNib()
         playerDetailsView.delegate = viewController
         playerDetailsView.set(viewModel: cellViewModel)
         playerDetailsView.frame = UIScreen.main.bounds

@@ -39,7 +39,7 @@ class NetworkService {
                         completion(nil)
                         return
                 }
-                print(results)
+//                print(results)
                 
                 let objects = try decoder.decode(SearchResults.self, from: data)
 //                print("objects:\(objects)")

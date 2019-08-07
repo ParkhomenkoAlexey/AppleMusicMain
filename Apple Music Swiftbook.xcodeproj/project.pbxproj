@@ -10,6 +10,7 @@
 		D62184778CAB1CCF051989A4 /* Pods_Apple_Music_Swiftbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F652A24CE3B86A8D745541CB /* Pods_Apple_Music_Swiftbook.framework */; };
 		F03A82C522F9FA5700FD5787 /* CMTime + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82C422F9FA5700FD5787 /* CMTime + Extension.swift */; };
 		F03A82C722FAC56300FD5787 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82C622FAC56300FD5787 /* FooterView.swift */; };
+		F03A82CA22FAE89700FD5787 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82C922FAE89700FD5787 /* Nib.swift */; };
 		F0813F7D22F72513001CAC52 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7622F72513001CAC52 /* SearchPresenter.swift */; };
 		F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7722F72513001CAC52 /* SearchWorker.swift */; };
 		F0813F7F22F72513001CAC52 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7822F72513001CAC52 /* SearchRouter.swift */; };
@@ -38,6 +39,7 @@
 		838C0ECFCA560CA5B3432749 /* Pods-Apple Music Swiftbook.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apple Music Swiftbook.debug.xcconfig"; path = "Target Support Files/Pods-Apple Music Swiftbook/Pods-Apple Music Swiftbook.debug.xcconfig"; sourceTree = "<group>"; };
 		F03A82C422F9FA5700FD5787 /* CMTime + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime + Extension.swift"; sourceTree = "<group>"; };
 		F03A82C622FAC56300FD5787 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		F03A82C922FAE89700FD5787 /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		F0813F7622F72513001CAC52 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		F0813F7722F72513001CAC52 /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
 		F0813F7822F72513001CAC52 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				F0813F8622F7264E001CAC52 /* UIViewController + Storyboard.swift */,
+				F03A82C922FAE89700FD5787 /* Nib.swift */,
 				F03A82C422F9FA5700FD5787 /* CMTime + Extension.swift */,
 			);
 			path = Helpers;
@@ -331,6 +334,7 @@
 				F0DD1BF022DF3CA900DCD102 /* ViewController.swift in Sources */,
 				F0813F8222F72513001CAC52 /* SearchInteractor.swift in Sources */,
 				F0DD1BEC22DF3CA900DCD102 /* AppDelegate.swift in Sources */,
+				F03A82CA22FAE89700FD5787 /* Nib.swift in Sources */,
 				F0DD1C0022DF3F0400DCD102 /* MainTabBarController.swift in Sources */,
 				F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */,
 				F0813F9222F83A57001CAC52 /* TrackCell.swift in Sources */,
