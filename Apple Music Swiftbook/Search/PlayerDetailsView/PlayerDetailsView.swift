@@ -65,6 +65,32 @@ class PlayerDetailsView: UIView {
 
     // MARK: - awakeFromNib
     
+    fileprivate func setupGestures() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+//        addGestureRecognizer(panGesture)
+        miniPlayerView.addGestureRecognizer(panGesture)
+        maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
+    }
+    
+    @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
+        print("maxi")
+        
+        if gesture.state == .changed {
+            let translation = gesture.translation(in: superview)
+            maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        } else if gesture.state == .ended {
+            let translation = gesture.translation(in: superview)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                self.maximizedStackView.transform = .identity
+                
+                if translation.y > 50 {
+                    self.tabBarDelegate?.minimizePlayerDetails()
+                }
+            })
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -74,9 +100,7 @@ class PlayerDetailsView: UIView {
         currentTimeSlider.minimumTrackTintColor = #colorLiteral(red: 0.464419961, green: 0.5312339664, blue: 0.5431776643, alpha: 1)
         currentTimeSlider.setThumbImage(#imageLiteral(resourceName: "Knob"), for: .normal)
         
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
-        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        addGestureRecognizer(panGesture)
+        setupGestures()
     }
 
     // MARK: - Setup
@@ -161,7 +185,7 @@ class PlayerDetailsView: UIView {
     
     @IBAction func handleDismiss(_ sender: Any) {
         self.tabBarDelegate?.minimizePlayerDetails()
-        panGesture.isEnabled = true
+//        panGesture.isEnabled = true
         
     }
     
@@ -214,7 +238,7 @@ extension PlayerDetailsView {
     @objc func handleTapMaximize() {
         print("tapping to maximize")
         tabBarDelegate?.maximizePlayerDetails(viewModel: nil)
-        panGesture.isEnabled = false
+//        panGesture.isEnabled = false
     }
     
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
@@ -248,7 +272,7 @@ extension PlayerDetailsView {
             self.transform = .identity
             if translation.y < -200 || velocity.y < -500 {
                 self.tabBarDelegate?.maximizePlayerDetails(viewModel: nil)
-                gesture.isEnabled = false
+//                gesture.isEnabled = false
             } else {
                 self.miniPlayerView.alpha = 1
                 self.maximizedStackView.alpha = 0
