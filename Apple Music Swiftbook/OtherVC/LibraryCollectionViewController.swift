@@ -10,19 +10,15 @@ import UIKit
 
 class LibraryCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    fileprivate let cellId = "cellId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        collectionView.backgroundColor = .gray
-    
         setupCollectionView()
-        navigationItem.title = "fd"
     }
     
-    fileprivate func setupCollectionView() {
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+    private func setupCollectionView() {
+        collectionView.backgroundColor = .gray
+        collectionView?.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.reuseId)
     }
     
     // MARK:- UICollectionView Delegate / Spacing Methods
@@ -32,8 +28,7 @@ class LibraryCollectionViewController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.reuseId, for: indexPath) as! LibraryCollectionViewCell
         return cell
     }
     
@@ -41,7 +36,7 @@ class LibraryCollectionViewController: UICollectionViewController, UICollectionV
         
         let width = (view.frame.width - 3 * 16) / 2
         
-        return CGSize(width: width, height: width)
+        return CGSize(width: width, height: width + 46)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

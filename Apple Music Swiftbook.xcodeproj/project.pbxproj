@@ -12,6 +12,7 @@
 		F03A82C722FAC56300FD5787 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82C622FAC56300FD5787 /* FooterView.swift */; };
 		F03A82CA22FAE89700FD5787 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82C922FAE89700FD5787 /* Nib.swift */; };
 		F03A82CC22FC197100FD5787 /* LibraryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82CB22FC197100FD5787 /* LibraryCollectionViewController.swift */; };
+		F03A82CE22FC1CF700FD5787 /* LibraryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03A82CD22FC1CF700FD5787 /* LibraryCollectionViewCell.swift */; };
 		F0813F7D22F72513001CAC52 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7622F72513001CAC52 /* SearchPresenter.swift */; };
 		F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7722F72513001CAC52 /* SearchWorker.swift */; };
 		F0813F7F22F72513001CAC52 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0813F7822F72513001CAC52 /* SearchRouter.swift */; };
@@ -28,7 +29,6 @@
 		F0870CCD22E3384300662E44 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870CCC22E3384300662E44 /* NetworkService.swift */; };
 		F0DD1BEC22DF3CA900DCD102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD1BEB22DF3CA900DCD102 /* AppDelegate.swift */; };
 		F0DD1BEE22DF3CA900DCD102 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD1BED22DF3CA900DCD102 /* SceneDelegate.swift */; };
-		F0DD1BF022DF3CA900DCD102 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DD1BEF22DF3CA900DCD102 /* ViewController.swift */; };
 		F0DD1BF322DF3CA900DCD102 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0DD1BF122DF3CA900DCD102 /* Main.storyboard */; };
 		F0DD1BF522DF3CAB00DCD102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0DD1BF422DF3CAB00DCD102 /* Assets.xcassets */; };
 		F0DD1BF822DF3CAB00DCD102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0DD1BF622DF3CAB00DCD102 /* LaunchScreen.storyboard */; };
@@ -42,6 +42,7 @@
 		F03A82C622FAC56300FD5787 /* FooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		F03A82C922FAE89700FD5787 /* Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		F03A82CB22FC197100FD5787 /* LibraryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewController.swift; sourceTree = "<group>"; };
+		F03A82CD22FC1CF700FD5787 /* LibraryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F0813F7622F72513001CAC52 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		F0813F7722F72513001CAC52 /* SearchWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorker.swift; sourceTree = "<group>"; };
 		F0813F7822F72513001CAC52 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		F0DD1BE822DF3CA900DCD102 /* Apple Music Swiftbook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Music Swiftbook.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DD1BEB22DF3CA900DCD102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0DD1BED22DF3CA900DCD102 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F0DD1BEF22DF3CA900DCD102 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0DD1BF222DF3CA900DCD102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0DD1BF422DF3CAB00DCD102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0DD1BF722DF3CAB00DCD102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 		F0813F8822F72D2C001CAC52 /* OtherVC */ = {
 			isa = PBXGroup;
 			children = (
-				F0DD1BEF22DF3CA900DCD102 /* ViewController.swift */,
 				F03A82CB22FC197100FD5787 /* LibraryCollectionViewController.swift */,
+				F03A82CD22FC1CF700FD5787 /* LibraryCollectionViewCell.swift */,
 			);
 			path = OtherVC;
 			sourceTree = "<group>";
@@ -334,12 +334,12 @@
 				F0813F9C22F8E238001CAC52 /* PlayerDetailsView.swift in Sources */,
 				F0813F8722F7264E001CAC52 /* UIViewController + Storyboard.swift in Sources */,
 				F0870CC922E0F44900662E44 /* SearchResults.swift in Sources */,
-				F0DD1BF022DF3CA900DCD102 /* ViewController.swift in Sources */,
 				F0813F8222F72513001CAC52 /* SearchInteractor.swift in Sources */,
 				F0DD1BEC22DF3CA900DCD102 /* AppDelegate.swift in Sources */,
 				F03A82CA22FAE89700FD5787 /* Nib.swift in Sources */,
 				F0DD1C0022DF3F0400DCD102 /* MainTabBarController.swift in Sources */,
 				F0813F7E22F72513001CAC52 /* SearchWorker.swift in Sources */,
+				F03A82CE22FC1CF700FD5787 /* LibraryCollectionViewCell.swift in Sources */,
 				F0813F9222F83A57001CAC52 /* TrackCell.swift in Sources */,
 				F0813F8122F72513001CAC52 /* SearchViewController.swift in Sources */,
 				F0813F7F22F72513001CAC52 /* SearchRouter.swift in Sources */,
