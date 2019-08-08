@@ -9,10 +9,6 @@
 import UIKit
 import AVKit
 
-//protocol NewsfeedCodeCellDelegate: class {
-//    func revealPost(for cell: NewsfeedCodeCell)
-//}
-
 protocol TrackMovingDelegate: class {
     func moveBackForPreviousTrack() -> SearchViewModel.Cell?
     func moveForwardForNextTrack()  -> SearchViewModel.Cell?
@@ -64,6 +60,8 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var currentTimeSlider: UISlider!
     
     @IBOutlet weak var volumeSlider: UISlider!
+    
+    var panGesture: UIPanGestureRecognizer!
 
     // MARK: - awakeFromNib
     
@@ -77,15 +75,10 @@ class PlayerDetailsView: UIView {
         currentTimeSlider.setThumbImage(#imageLiteral(resourceName: "Knob"), for: .normal)
         
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        addGestureRecognizer(panGesture)
     }
-    
-    // MARK: - Maximizing and Minimizing gestures
-    
-    @objc func handleTapMaximize() {
-        print("tapping to maximize")
-        tabBarDelegate?.maximizePlayerDetails(viewModel: nil)
-    }
-    
+
     // MARK: - Setup
     
     func set(viewModel: SearchViewModel.Cell) {
@@ -168,6 +161,7 @@ class PlayerDetailsView: UIView {
     
     @IBAction func handleDismiss(_ sender: Any) {
         self.tabBarDelegate?.minimizePlayerDetails()
+        panGesture.isEnabled = true
         
     }
     
@@ -212,4 +206,54 @@ class PlayerDetailsView: UIView {
         player.volume = volumeSlider.value
     }
     
+}
+
+    // MARK: - Maximizing and Minimizing gestures
+extension PlayerDetailsView {
+
+    @objc func handleTapMaximize() {
+        print("tapping to maximize")
+        tabBarDelegate?.maximizePlayerDetails(viewModel: nil)
+        panGesture.isEnabled = false
+    }
+    
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        print("Panning")
+        if gesture.state == .began {
+            print("Began")
+        } else if gesture.state == .changed {
+            print("changed")
+            handlePanChanged(gesture: gesture)
+        } else if gesture.state == .ended {
+            handlePanEnded(gesture: gesture)
+        }
+    }
+    
+    func handlePanChanged(gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: self.superview)
+        self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+        //        self.miniPlayerView.alpha = 1 + translation.y / 200
+        let newAlpha = 1 + translation.y / 200
+        self.miniPlayerView.alpha = newAlpha < 0 ? 0 : newAlpha
+        self.maximizedStackView.alpha = -translation.y / 200
+    }
+    
+    func handlePanEnded(gesture: UIPanGestureRecognizer) {
+        print("ended")
+        let translation = gesture.translation(in: self.superview)
+        let velocity = gesture.velocity(in: self.superview)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.transform = .identity
+            if translation.y < -200 || velocity.y < -500 {
+                self.tabBarDelegate?.maximizePlayerDetails(viewModel: nil)
+                gesture.isEnabled = false
+            } else {
+                self.miniPlayerView.alpha = 1
+                self.maximizedStackView.alpha = 0
+                
+            }
+        })
+    }
 }

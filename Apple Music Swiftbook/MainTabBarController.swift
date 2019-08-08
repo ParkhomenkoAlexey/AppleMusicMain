@@ -20,6 +20,7 @@ class MainTabBarController: UITabBarController {
     let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
     private var maximizedTopAnchorConstraint: NSLayoutConstraint!
     private var minimizedTopAnchorConstraint: NSLayoutConstraint!
+    private var bottomAnchorConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,11 +63,15 @@ extension MainTabBarController {
         playerDetaisView.delegate = searchVC
         
         maximizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
+        
+        bottomAnchorConstraint = playerDetaisView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
+        bottomAnchorConstraint.isActive = true
+        
         minimizedTopAnchorConstraint = playerDetaisView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
         
         maximizedTopAnchorConstraint.isActive = true
         
-        playerDetaisView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
         playerDetaisView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         playerDetaisView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
@@ -76,16 +81,17 @@ extension MainTabBarController: MainTabBarControllerDelegate {
     
     func maximizePlayerDetails(viewModel: SearchViewModel.Cell?) {
         
+        minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
-        minimizedTopAnchorConstraint.isActive = false
+        bottomAnchorConstraint.constant = 0
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
             
-            self.playerDetaisView.maximizedStackView.isHidden = false
-            self.playerDetaisView.miniPlayerView.isHidden = true
+            self.playerDetaisView.maximizedStackView.alpha = 1
+            self.playerDetaisView.miniPlayerView.alpha = 0
         }, completion: nil)
         
         guard let viewModel = viewModel else { return }
@@ -95,14 +101,16 @@ extension MainTabBarController: MainTabBarControllerDelegate {
     func minimizePlayerDetails() {
         
         maximizedTopAnchorConstraint.isActive = false
+        bottomAnchorConstraint.constant = view.frame.height
         minimizedTopAnchorConstraint.isActive = true
+        
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             self.tabBar.transform = .identity
             
-            self.playerDetaisView.maximizedStackView.isHidden = true
-            self.playerDetaisView.miniPlayerView.isHidden = false
+            self.playerDetaisView.maximizedStackView.alpha = 0
+            self.playerDetaisView.miniPlayerView.alpha = 1
         }, completion: nil)
     }
 }
