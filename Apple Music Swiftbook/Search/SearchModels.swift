@@ -33,12 +33,26 @@ enum Search {
 }
 
 struct SearchViewModel {
-    struct Cell: TrackCellViewModel {
+    class Cell: TrackCellViewModel {
         var iconUrlString: String?
         var trackName: String
         var artistName: String
         var collectionName: String
         let previewUrl: String?
+        
+
+        init(iconUrlString: String?,
+             trackName: String,
+             artistName: String,
+             collectionName: String,
+             previewUrl: String?) {
+            self.iconUrlString = iconUrlString
+            self.trackName = trackName
+            self.artistName = artistName
+            self.collectionName = collectionName
+            self.previewUrl = previewUrl
+        }
+        
     }
     
     let cells: [Cell]

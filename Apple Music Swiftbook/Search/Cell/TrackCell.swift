@@ -19,11 +19,14 @@ protocol TrackCellViewModel {
 class TrackCell: UITableViewCell {
     
     static let reuseId = "TrackCell"
+    var viewModel: TrackCellViewModel!
     
     @IBOutlet weak var trackImageView: UIImageView!
     @IBOutlet weak var trackNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var collectionNameLabel: UILabel!
+    @IBOutlet weak var addTrackButton: UIButton!
+    
     
     override func prepareForReuse() {
         trackImageView.image = nil
@@ -38,10 +41,31 @@ class TrackCell: UITableViewCell {
     }
     
     func set(viewModel: TrackCellViewModel) {
+        self.viewModel = viewModel
         trackNameLabel.text = viewModel.trackName
         artistNameLabel.text = viewModel.artistName
         collectionNameLabel.text = viewModel.collectionName
         guard let url = URL(string: viewModel.iconUrlString ?? "") else { return }
         trackImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    
+    @IBAction func addTrack(_ sender: Any) {
+        print("123")
+        let defaults = UserDefaults.standard
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: viewModel, requiringSecureCoding: false) {
+            
+            defaults.set(savedData, forKey: "LibraryTracks")
+            print("success!")
+        }
+        let savedTrack = defaults.object(forKey: "LibraryTracks") as? TrackCellViewModel ?? nil
+        print(savedTrack)
+        
+//        let defaults = UserDefaults.standard
+//        defaults.set(25, forKey: "Age")
+//
+//        let savedInteger = defaults.object(forKey: "Age") as? Int ?? nil
+//        print(savedInteger)
+        
     }
 }
